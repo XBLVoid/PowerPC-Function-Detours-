@@ -116,5 +116,5 @@ void DetourStart(unsigned long *Address, unsigned long *Function, unsigned long 
 	}
 
 	DetourStart((unsigned long*)0x1337, (unsigned long*)ExampleHook, (unsigned long*)ExampleStub);
-				Adddress to Hook		Address of HookFunction	Address of Save Stub	
+		    Adddress to Hook	     Address of HookFunction	  Address of Save Stub	
 */
