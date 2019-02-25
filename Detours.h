@@ -55,7 +55,7 @@ void PatchInJump(unsigned long *Address, unsigned long *Function)
 {
 	int FunctionAddress;
 
-		Address ? FunctionAddress = (unsigned long)Function : FunctionAddress = 0;
+	Address ? FunctionAddress = (unsigned long)Function : FunctionAddress = 0;
 
 	if (FunctionAddress)
 	{
@@ -74,7 +74,7 @@ void DetourStart(unsigned long *Address, unsigned long *Function, unsigned long 
     
     if (JumpAddress)
     {
-		Stub[0] = 0x3D600000 + (((JumpAddress >> 16) & 0xFFFF) + (JumpAddress & 0x8000 ?  1 : 0)); // lis r11, JumpAddress
+	Stub[0] = 0x3D600000 + (((JumpAddress >> 16) & 0xFFFF) + (JumpAddress & 0x8000 ?  1 : 0)); // lis r11, JumpAddress
         Stub[1] = 0x396B0000 + (JumpAddress & 0xFFFF); // Addi r11, r11
         Stub[2] = 0x7D6903A6; // mtcr r11
 		for (int i = 0; i < 4; i++)
@@ -84,8 +84,8 @@ void DetourStart(unsigned long *Address, unsigned long *Function, unsigned long 
         Stub[7] = 0x4E800420; // bctr
 
         __dcbst(0, Stub); 
-		__sync(); 
-		__isync(); 
+	__sync(); 
+	__isync(); 
         PatchInJump(Address, Function);
     }
 }
